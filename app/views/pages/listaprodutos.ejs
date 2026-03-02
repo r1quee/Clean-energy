@@ -28,121 +28,9 @@
       <!-- Botão novo produto -->
       <a href="/cadastrar_produto" class="btn btn-success mb-4">Novo Produto</a>
 
-      <!-- Lista de produtos -->
+      <!-- Lista de produtos - Será carregada dinamicamente via JavaScript -->
       <section class="produtos-grid">
-
-        <!-- Produto 1 -->
-        <article class="produto-card">
-          <figure>
-            <img src="/imagem/cana.png" alt="Produto">
-          </figure>
-          <section class="produto-info">
-            <h3>Bagaço de Cana</h3>
-            <p class="endereco">Rua das Flores, 123 - São Paulo</p>
-            <p class="preco">R$ 1500,00</p>
-            <p class="quantidade">20 Tonelada(s)</p>
-          </section>
-          <section class="acoes">
-            <button class="btn btn-warning btn-sm">Editar</button>
-            
-           
-           <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
-          </section>
-        </article>
-
-        <!-- Exemplo de outro produto -->
-        <article class="produto-card">
-          <figure>
-            <img src="/imagem/serragem.png" alt="Produto">
-          </figure>
-          <section class="produto-info">
-            <h3>Serragem</h3>
-            <p class="endereco">Rua Joaquim dos Santos Andrade, 49 - São Paulo</p>
-            <p class="preco">R$ 250,00</p>
-            <p class="quantidade">1 Tonelada(s)</p>
-          </section>
-          <section class="acoes">
-            <button class="btn btn-warning btn-sm">Editar</button>
-            
-            
-            <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
-          </section>
-        </article>
-
-
-        <article class="produto-card">
-          <figure>
-            <img src="/imagem/palhademilho.png" alt="Produto">
-          </figure>
-          <section class="produto-info">
-            <h3>Palha de Milho</h3>
-            <p class="endereco">Rua Alcides Bezerra, 48 - São Paulo</p>
-            <p class="preco">R$ 440,00</p>
-            <p class="quantidade">2 Tonelada(s)</p>
-          </section>
-          <section class="acoes">
-            <button class="btn btn-warning btn-sm">Editar</button>
-            
-
-            <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
-          </section>
-        </article>
-
-
-        <article class="produto-card">
-          <figure>
-            <img src="/imagem/cascadearroz.png" alt="Produto">
-          </figure>
-          <section class="produto-info">
-            <h3>Casca de Arroz</h3>
-            <p class="endereco">Rua do Carmo, 81 - São Paulo</p>
-            <p class="preco">R$ 1275,00</p>
-            <p class="quantidade">1 Tonelada(s)</p>
-          </section>
-          <section class="acoes">
-            <button class="btn btn-warning btn-sm">Editar</button>
-            
-          
-            <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
-          </section>
-        </article>
-
-        <article class="produto-card">
-          <figure>
-            <img src="/imagem/lixo organico.png" alt="Produto">
-          </figure>
-          <section class="produto-info">
-            <h3>Lixo Orgânico</h3>
-            <p class="endereco">Rua Silveira Martins, 53 - São Paulo</p>
-            <p class="preco">R$ 900,00</p>
-            <p class="quantidade">2 Tonelada(s)</p>
-          </section>
-          <section class="acoes">
-            <button class="btn btn-warning btn-sm">Editar</button>
-            
-           
-           <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
-          </section>
-        </article>
-
-        <article class="produto-card">
-          <figure>
-            <img src="/imagem/pellets.png" alt="Produto">
-          </figure>
-          <section class="produto-info">
-            <h3>Pallets</h3>
-            <p class="endereco">Rua Vinícius de Morais - São Paulo</p>
-            <p class="preco">R$ 2000,00</p>
-            <p class="quantidade">2 Tonelada(s)</p>
-          </section>
-          <section class="acoes">
-            <button class="btn btn-warning btn-sm">Editar</button>
-            
-            
-           <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
-          </section>
-        </article>
-
+        <!-- Os produtos serão carregados aqui dinamicamente -->
       </section>
     </section>
 
@@ -210,10 +98,12 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- Script para carregar produtos da API -->
+<script src="/js/carregar-produtos.js"></script>
+
 <!-- Script de validação e funcionalidades -->
 <script src="/js/listaprodutos.js"></script>
 
 <%- include('../partial/footer.ejs') %>
 </body>
 </html>
-

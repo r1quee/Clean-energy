@@ -3,10 +3,12 @@ var router = express.Router();
 const { body, validationResult } = require("express-validator");
 const usuarios = []; 
 
+// Importar controlador de produtos
+const produtoController = require("../controllers/produtoController");
 
 var {validarCPF} = require("../helpers/validacao");
 
-/* produtos */
+/* produtos - dados iniciais mantidos para compatibilidade */
 const produtos = [
   {
     id: 1,
@@ -657,5 +659,113 @@ router.post("/login", (req, res) => {
   }
 });
 /* ========== FIM DAS VALIDAÇÕES ========= */
+
+/* ========== ROTAS DE API PARA PRODUTOS ========== */
+
+// GET - Listar todos os produtos (API)
+router.get("/api/produtos", (req, res) => {
+  try {
+    const produtos = produtoController.listarProdutos();
+    res.json(produtos);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao listar produtos", detalhes: error.message });
+  }
+});
+
+// POST - Criar novo produto
+router.post(
+  "/api/produtos",
+  body("nome")
+    .trim()
+    .notEmpty()
+    .withMessage("Nome é obrigatório")
+    .isLength({ min: 3, max: 100 })
+    .withMessage("Nome deve ter entre 3 e 100 caracteres"),
+  
+  body("descricao")
+    .trim()
+    .notEmpty()
+    .withMessage("Descrição é obrigatória")
+    .isLength({ min: 10, max: 500 })
+    .withMessage("Descrição deve ter entre 10 e 500 caracteres"),
+  
+  body("preco")
+    .notEmpty()
+    .withMessage("Preço é obrigatório")
+    .isFloat({ min: 0.01 })
+    .withMessage("Preço deve ser um número válido"),
+  
+  body("quantidade")
+    .notEmpty()
+    .withMessage("Quantidade é obrigatória")
+    .isFloat({ min: 0.01 })
+    .withMessage("Quantidade deve ser um número válido"),
+  
+  body("local")
+    .optional()
+    .trim(),
+  
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ 
+        erro: "Validação falhou",
+        detalhes: errors.array() 
+      });
+    }
+
+    try {
+      const novoProduto = produtoController.criarProduto(req.body);
+      res.status(201).json({ 
+        mensagem: "Produto criado com sucesso",
+        produto: novoProduto 
+      });
+    } catch (error) {
+      res.status(500).json({ erro: "Erro ao criar produto", detalhes: error.message });
+    }
+  }
+);
+
+// GET - Obter produto pelo ID
+router.get("/api/produtos/:id", (req, res) => {
+  try {
+    const produto = produtoController.obterProduto(req.params.id);
+    if (!produto) {
+      return res.status(404).json({ erro: "Produto não encontrado" });
+    }
+    res.json(produto);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao buscar produto", detalhes: error.message });
+  }
+});
+
+// PUT - Atualizar produto
+router.put("/api/produtos/:id", (req, res) => {
+  try {
+    const produtoAtualizado = produtoController.atualizarProduto(req.params.id, req.body);
+    if (!produtoAtualizado) {
+      return res.status(404).json({ erro: "Produto não encontrado" });
+    }
+    res.json({ 
+      mensagem: "Produto atualizado com sucesso",
+      produto: produtoAtualizado 
+    });
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao atualizar produto", detalhes: error.message });
+  }
+});
+
+// DELETE - Deletar produto
+router.delete("/api/produtos/:id", (req, res) => {
+  try {
+    const deletado = produtoController.deletarProduto(req.params.id);
+    if (!deletado) {
+      return res.status(404).json({ erro: "Produto não encontrado" });
+    }
+    res.json({ mensagem: "Produto deletado com sucesso" });
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao deletar produto", detalhes: error.message });
+  }
+});
 
 module.exports = router;

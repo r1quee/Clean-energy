@@ -24,9 +24,9 @@
     <!-- Formulário de cadastro -->
     <form 
         class="product-form" 
-        method="GET" 
-        action="/listaprodutos" 
-        enctype="multipart/form-data"
+        id="productForm"
+        method="POST" 
+        action="/api/produtos" 
         novalidate
         aria-label="Formulário de cadastro de produto"
       >
@@ -395,6 +395,6 @@
     </form>
   </main>
 
-  <script src="/js/produto-validation.js"></script>
+  <script src="/js/cadastro-ajax.js"></script>
 </body>
 </html>

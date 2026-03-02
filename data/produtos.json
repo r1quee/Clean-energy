@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "nome": "Lenha tratada",
+    "descricao": "Lenha tratada com baixa umidade, ideal para geração de energia. Pronta para usar em caldeiras de biomassa.",
+    "preco": 250,
+    "quantidade": 10,
+    "local": "Campinas - SP",
+    "imagem": "Lenha.png",
+    "ativo": true,
+    "dataCriacao": "2026-03-02T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "nome": "Casca de arroz",
+    "descricao": "Casca de arroz limpa, excelente para uso em caldeiras de biomassa. Alta eficiência energética.",
+    "preco": 1275,
+    "quantidade": 5,
+    "local": "Guarulhos - SP",
+    "imagem": "cascadearroz.png",
+    "ativo": true,
+    "dataCriacao": "2026-03-02T10:05:00.000Z"
+  },
+  {
+    "id": 3,
+    "nome": "TESTE",
+    "descricao": "Só pra testar",
+    "preco": 1.99,
+    "quantidade": 1,
+    "local": "Rua Bandeirantes, 34 - Barueri, Jd. Belval",
+    "imagem": "default.png",
+    "ativo": true,
+    "dataCriacao": "2026-03-02T22:37:36.854Z"
+  },
+  {
+    "id": 4,
+    "nome": "TESTE",
+    "descricao": "apenas um teste",
+    "preco": 1.99,
+    "quantidade": 1,
+    "local": "Jalim rabei, 34 - Akina esquina, Morro do piolho",
+    "imagem": "default.png",
+    "ativo": true,
+    "dataCriacao": "2026-03-02T22:42:11.122Z"
+  }
+]
